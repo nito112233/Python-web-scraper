@@ -74,22 +74,39 @@ def click_next_month(driver):
     next_month_button = driver.find_element(By.CSS_SELECTOR, "button.fc-prev-button")
     next_month_button.click()
 
+# Check if user input is correct
+def check_input():
+    print("Lūdzu, ievadiet semestri, kuru vēlaties apskatīties- 1 vai 2 vai 3")
+    print("1 -Rudens semestris 2023/2024, 2 -Pavasara semestris 2023/2024, 3 -Rudens semestris 2023/2024")
+    user_input = input()
+    if user_input in ["1", "2", "3"]:
+        return user_input
+    else:
+        print("Kļūdaina ievade")
+        return check_input()
+
+user_input = check_input()
+
 service = Service()
 option = webdriver.ChromeOptions()
 driver = webdriver.Chrome(service=service, options=option)
 
-# Example for multiple months
-months = ["Maijs", "Aprīlis", "Marts", "Februāris", "Janvāris"]  # Should be passed to func to display month name in graph
-first_month = "Jūnijs"
-semester_id = "18"
-
-semester_id = input("Enter the semester ID you'd like to view: ")
-print(semester_id)
-
-
 url = "https://nodarbibas.rtu.lv/"
 driver.get(url)
 time.sleep(1)
+
+if user_input == "1":
+    months = ["Decembris", "Novembris", "Oktobris", "Septembris"]
+    first_month = "Janvāris"
+    semester_id = "20"
+elif user_input == "2":
+    months = ["Maijs", "Aprīlis", "Marts", "Februāris", "Janvāris"]
+    first_month = "Jūnijs"
+    semester_id = "18"
+elif user_input == "3":
+    months = ["Decembris", "Novembris", "Oktobris", "Septembris"]
+    first_month = "Janvāris"
+    semester_id = "17"
 
 select_element = driver.find_element(By.ID, "semester-id")
 select = Select(select_element)
@@ -124,6 +141,6 @@ for month in months:
     extract_lecture_data(driver, month)
 
 
-time.sleep(5)
+time.sleep(2)
 
 driver.quit()
