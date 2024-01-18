@@ -167,13 +167,13 @@ time.sleep(1)
 select_element_group = driver.find_element(By.ID, "group-id")
 select_group = Select(select_element_group)
 select_group.select_by_visible_text("1")
-time.sleep(2)
+time.sleep(3)
 extract_lecture_data(driver, first_month)
 
 # Ittarate over months
 for month in months:
     click_next_month(driver)
-    time.sleep(2)
+    time.sleep(3)
     extract_lecture_data(driver, month)
 
 
