@@ -35,4 +35,6 @@ Lai sāktu izmantot programmu, izpildiet main.py failu un ievadiet nepieciešamo
 5. Ievadiet 1 vai 2 vai 3, lai izvēlētos kādu no semestriem
 6. Aizveriet matplotlib grafika logu, kad esat gatavi pāriet uz nākamo mēnesi
 
+Dastins Zvans, IT 1.kurss 1. grupa RTU
+
 ## Programmas darbības ierakstu var apskatīt ieraksts.mov!
